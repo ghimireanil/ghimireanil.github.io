@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Evolution Timeline - John Doe</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .artifact-header {
+            text-align: center;
+            padding: 40px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .timeline-item {
+            margin: 40px 0;
+            position: relative;
+            width: 50%;
+            padding: 20px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 40px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .analysis-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .analysis-card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .analysis-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 50px !important;
+                padding-right: 20px !important;
+            }
+            
+            .timeline-item::before {
+                left: 10px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="back-btn">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Artifact Header -->
+        <div class="artifact-header">
+            <h1>AI Evolution Timeline Analysis</h1>
+            <p>Tracking the milestones that shaped modern artificial intelligence</p>
+        </div>
+
+        <!-- Timeline Visualization -->
+        <div class="timeline-container">
+            <h2>Key Milestones in AI Development</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1950</div>
+                    <div class="timeline-content">
+                        <h3>Turing Test</h3>
+                        <p>Alan Turing proposes the "Imitation Game" as a measure of machine intelligence</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1956</div>
+                    <div class="timeline-content">
+                        <h3>Dartmouth Workshop</h3>
+                        <p>Term "Artificial Intelligence" coined by McCarthy, Minsky, Rochester, and Shannon</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1957</div>
+                    <div class="timeline-content">
+                        <h3>Perceptron</h3>
+                        <p>Frank Rosenblatt develops the first neural network capable of learning</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1986</div>
+                    <div class="timeline-content">
+                        <h3>Backpropagation</h3>
+                        <p>Rumelhart, Hinton, and Williams popularize the backpropagation algorithm</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1997</div>
+                    <div class="timeline-content">
+                        <h3>Deep Blue vs Kasparov</h3>
+                        <p>IBM's Deep Blue defeats world chess champion Garry Kasparov</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2011</div>
+                    <div class="timeline-content">
+                        <h3>IBM Watson</h3>
+                        <p>Watson wins Jeopardy, demonstrating advanced natural language processing</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2012</div>
+                    <div class="timeline-content">
+                        <h3>AlexNet</h3>
+                        <p>Deep CNN achieves breakthrough performance on ImageNet, starting deep learning revolution</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-content">
+                        <h3>Transformer Architecture</h3>
+                        <p>"Attention Is All You Need" paper introduces transformer architecture</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h3>BERT</h3>
+                        <p>Google's BERT demonstrates power of pre-training for language understanding</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>ChatGPT</h3>
+                        <p>OpenAI releases ChatGPT, bringing LLMs to mainstream audience</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>GPT-4 & EU AI Act</h3>
+                        <p>Multimodal capabilities and comprehensive AI regulation emerge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="analysis-section">
+            <h2>Technical Analysis & Insights</h2>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h4>Hardware Acceleration</h4>
+                    <p>The 2012 AlexNet breakthrough was enabled by GPU computing, demonstrating how hardware advances often precede algorithmic innovations. This pattern continues with specialized AI chips today.</p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4>Architecture Evolution</h4>
+                    <p>From perceptrons to transformers, each architectural innovation unlocked new capabilities. The transformer's attention mechanism particularly revolutionized sequence processing tasks.</p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4>Scale and Data</h4>
+                    <p>The shift from rule-based systems to data-driven learning, enabled by large datasets like ImageNet, fundamentally changed AI development approaches and capabilities.</p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4>Industry Impact</h4>
+                    <p>Each milestone created new industry applications - from expert systems in the 90s to modern LLMs transforming content creation, customer service, and software development.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Reflection -->
+        <div class="analysis-section">
+            <h2>Professional Reflection</h2>
+            <p>Understanding this evolutionary trajectory is crucial for anticipating future developments. The pattern shows accelerating progress with each breakthrough building on previous innovations.</p>
+            <p>As an engineer with mechanical and software background, I appreciate how each advancement required both theoretical insights and practical engineering implementation. The most successful innovations combined mathematical elegance with scalable engineering.</p>
+            <p>This historical context informs my approach to AI system design - balancing cutting-edge techniques with production-ready implementation, much like the transition from research prototypes to robust systems seen throughout this timeline.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Anil Ghimiure - AI Engineering Portfolio</p>
+            <p>Combining Engineering Principles with Modern AI Systems</p>
+        </div>
+    </footer>
+</body>
+</html>
