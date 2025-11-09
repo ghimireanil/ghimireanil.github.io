@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anil Ghimire</title>
+    <title>Anil Ghimire - AI Portfolio</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -65,11 +65,24 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .btn:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            margin-left: 10px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
         }
         
         section {
@@ -144,17 +157,17 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             border: 1px solid #eee;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         
         .project-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -179,6 +192,11 @@
             margin-bottom: 15px;
         }
         
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+        
         footer {
             background: var(--primary);
             color: white;
@@ -197,6 +215,32 @@
         .contact-links a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-links a:hover {
+            color: var(--light);
+        }
+        
+        .journey-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .journey-item {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .journey-date {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
         }
         
         @media (max-width: 768px) {
@@ -212,6 +256,16 @@
                 padding: 40px 0;
                 margin: 20px 0;
             }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 10px;
+                display: block;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -221,9 +275,12 @@
         <div class="container">
             <div class="hero">
                 <h1>Anil Ghimire</h1>
-                <h2>AI Engineer | Bridging Physical Systems & Intelligent Software</h2>
-                <p>Graduate AI student with a BS in Mechanical Engineering, MS in Data Science, and 4 years of experience as a Software Engineer. Specializing in production-ready AI systems.</p>
-                <a href="#projects" class="btn">View My Artifacts</a>
+                <h2>AI Engineer | Bridging Technical Innovation with Ethical Responsibility</h2>
+                <p>Graduate AI student with a BS in Mechanical Engineering, MS in Data Science, and 4 years of experience as a Software Engineer. Specializing in building responsible, production-ready AI systems.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Projects</a>
+                    <a href="#about" class="btn btn-outline">My Journey</a>
+                </div>
             </div>
         </div>
     </header>
@@ -233,18 +290,24 @@
         <section id="about">
             <div class="section-content">
                 <h2>My Professional Journey</h2>
-                <div class="about-content">
-                    <h3>From Mechanical Systems to Intelligent Software</h3>
-                    <p>My unique background combines hands-on engineering experience with cutting-edge AI research. This interdisciplinary approach allows me to build solutions that are both technically sophisticated and practically applicable.</p>
+                <div class="journey-timeline">
+                    <div class="journey-item">
+                        <div class="journey-date">BS Mechanical Engineering</div>
+                        <h3>Foundation in Systems Thinking</h3>
+                        <p>My mechanical engineering background taught me to think in terms of systems, physics, and constraints. I developed a deep understanding of how physical systems behave, which gives me unique insight into building AI solutions for real-world applications and industrial systems.</p>
+                    </div>
                     
-                    <h3>BS Mechanical Engineering</h3>
-                    <p>Developed strong foundations in systems thinking, physics-based modeling, and understanding real-world constraints. This background gives me unique insight into deploying AI in physical systems and industrial applications.</p>
+                    <div class="journey-item">
+                        <div class="journey-date">4 Years as Software Engineer</div>
+                        <h3>Production-Ready Code & Scalability</h3>
+                        <p>My experience as a software engineer gave me a deep appreciation for clean, scalable, and maintainable code in production environments. I've built and deployed systems handling millions of requests, focusing on reliability, monitoring, and DevOps best practices.</p>
+                    </div>
                     
-                    <h3>4 Years Software Engineering</h3>
-                    <p>Gained extensive experience in building scalable, production-ready systems. Focused on software architecture, DevOps practices, and maintaining high-quality codebases in enterprise environments.</p>
-                    
-                    <h3>Graduate AI Studies</h3>
-                    <p>Currently advancing my expertise in machine learning, deep learning, and AI system design. Combining theoretical knowledge with practical implementation skills to solve complex problems.</p>
+                    <div class="journey-item">
+                        <div class="journey-date">MS Data Science + AI Graduate Studies</div>
+                        <h3>Bridging Theory and Practice</h3>
+                        <p>Now, I'm merging these disciplines to build the next generation of intelligent systems that interact with the physical world. My focus is on creating AI solutions that are not just theoretically sound but production-ready, scalable, and ethically responsible.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -265,6 +328,7 @@
                             <span class="skill-tag">Computer Vision</span>
                             <span class="skill-tag">NLP</span>
                             <span class="skill-tag">Reinforcement Learning</span>
+                            <span class="skill-tag">Statistical Analysis</span>
                         </div>
                     </div>
                     
@@ -278,6 +342,8 @@
                             <span class="skill-tag">REST APIs</span>
                             <span class="skill-tag">System Design</span>
                             <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">SQL/NoSQL</span>
                         </div>
                     </div>
                     
@@ -290,6 +356,8 @@
                             <span class="skill-tag">Data Pipelines</span>
                             <span class="skill-tag">Model Deployment</span>
                             <span class="skill-tag">Monitoring</span>
+                            <span class="skill-tag">Feature Stores</span>
+                            <span class="skill-tag">Experiment Tracking</span>
                         </div>
                     </div>
                 </div>
@@ -299,34 +367,58 @@
         <!-- Projects Section -->
         <section id="projects">
             <div class="section-content">
-                <h2>Featured Project</h2>
+                <h2>Featured Projects</h2>
                 <div class="projects-grid">
+                    <!-- AI Ethics Timeline Project -->
                     <div class="project-card">
-                        <div class="project-image">
-                            AI Timeline Analysis
+                        <div class="project-image" style="background: linear-gradient(45deg, #3498db, #2980b9);">
+                            AI Ethics Timeline
                         </div>
                         <div class="project-content">
-                            <h3>AI Evolution Timeline</h3>
-                            <p>Comprehensive analysis of artificial intelligence milestones from the Turing Test to modern large language models. This project demonstrates my ability to contextualize technical advancements within broader historical and ethical frameworks.</p>
+                            <h3>AI Evolution & Ethics Timeline</h3>
+                            <p>Comprehensive analysis of AI milestones with focus on the growing importance of ethical frameworks. This research demonstrates my commitment to responsible AI development and understanding of the historical context of AI advancement.</p>
                             <div class="project-meta">
-                                <div class="tech-stack">Research • Data Visualization • Technical Analysis</div>
-                                <a href="ai-timeline.html" class="btn">View Timeline Analysis</a>
+                                <div class="tech-stack">Research • Ethics Analysis • Technical Evaluation • Data Visualization</div>
+                                <div class="project-links">
+                                    <a href="ai-timeline.html" class="btn">View Ethical Analysis</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- ML vs DL Analysis Project -->
                     <div class="project-card">
-    <div class="project-image" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
-        ML vs DL Analysis
-    </div>
-    <div class="project-content">
-        <h3>Machine Learning vs Deep Learning</h3>
-        <p>Comparative analysis of classical ML and deep learning approaches through real-world case studies. Examines when to use each methodology based on data characteristics and problem requirements.</p>
-        <div class="project-meta">
-            <div class="tech-stack">Comparative Analysis • Case Studies • Methodology Selection</div>
-            <a href="ml-dl-comparison.html" class="btn">Read Analysis</a>
-        </div>
-    </div>
-</div>
+                        <div class="project-image" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                            ML vs DL Analysis
+                        </div>
+                        <div class="project-content">
+                            <h3>Machine Learning vs Deep Learning</h3>
+                            <p>Comparative analysis of classical ML and deep learning approaches through real-world case studies. Examines when to use each methodology based on data characteristics, problem requirements, and practical constraints.</p>
+                            <div class="project-meta">
+                                <div class="tech-stack">Comparative Analysis • Case Studies • Methodology Selection • Technical Writing</div>
+                                <div class="project-links">
+                                    <a href="ml-dl-comparison.html" class="btn">Read Analysis</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Coming Soon Project -->
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b);">
+                            Coming Soon
+                        </div>
+                        <div class="project-content">
+                            <h3>Predictive Maintenance System</h3>
+                            <p>End-to-end ML system for industrial equipment monitoring and failure prediction. Combining mechanical engineering domain knowledge with machine learning for real-world industrial applications.</p>
+                            <div class="project-meta">
+                                <div class="tech-stack">Python • Time Series • IoT • MLOps • System Design</div>
+                                <div class="project-links">
+                                    <a href="#" class="btn" style="background: #95a5a6; cursor: not-allowed;">In Progress</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -336,13 +428,53 @@
     <footer>
         <div class="container">
             <h3>Let's Connect</h3>
-            <p>Focused in AI Engineering, Software Engineering and Machine Learning Infrastructure</p>
+            <p>Open to opportunities in AI Engineering, ML Infrastructure, and Research roles where I can apply my interdisciplinary background to build innovative and responsible AI systems.</p>
             <div class="contact-links">
-                <a href="mailto:anil.ghimire020@gmail.com">Email</a>
-                <a href="https://linkedin.com/in/ghimireanil">LinkedIn</a>
-                <a href="https://github.com/ghimireanil">GitHub</a>
+                <a href="mailto:anil.ghimire@email.com">Email</a>
+                <a href="https://linkedin.com/in/anilghimire">LinkedIn</a>
+                <a href="https://github.com/anilghimire">GitHub</a>
+                <a href="#">Resume</a>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
