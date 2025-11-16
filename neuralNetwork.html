@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Networks in Simple Terms</title>
+    <title>Neural Networks Explained: How Machines Learn Patterns Like Humans</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -118,27 +118,26 @@
             border-left: 4px solid var(--secondary);
         }
         
-        .neuron-diagram {
+        .diagram-container {
             background: #f8f9fa;
             padding: 30px;
             border-radius: 8px;
             margin: 30px 0;
             border: 2px solid #e9ecef;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .neuron-visual {
             text-align: center;
-            margin: 20px 0;
-            line-height: 1.4;
         }
         
-        .network-diagram {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 30px 0;
-            border: 2px solid #e9ecef;
+        .diagram-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .diagram-caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
             text-align: center;
         }
         
@@ -148,15 +147,6 @@
             border-radius: 8px;
             margin: 25px 0;
             border-left: 4px solid #ffc107;
-        }
-        
-        .loop-diagram {
-            text-align: center;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
         }
         
         .conclusion-box {
@@ -209,20 +199,9 @@
                 padding: 30px 20px;
             }
             
-            .neuron-diagram, .network-diagram {
-                padding: 20px 10px;
-                font-size: 0.9em;
+            .diagram-container {
+                padding: 20px;
             }
-        }
-        
-        .code-block {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
         }
     </style>
 </head>
@@ -247,7 +226,7 @@
         <!-- Abstract -->
         <div class="abstract">
             <h2>Abstract</h2>
-            <p>This paper is written completely by Deepseek; an AI agent in a single prompt. This paper provides a foundational understanding of neural networks in machine learning by using the analogy of a child learning to recognize animals. We break down the complex concept into its core components: the artificial neuron, the network structure, and the learning process, supported by conceptual diagrams and intuitive explanations.</p>
+            <p>This paper provides a foundational understanding of neural networks in machine learning by using the analogy of a child learning to recognize animals. We break down the complex concept into its core components: the artificial neuron, the network structure, and the learning process, supported by visual diagrams and intuitive explanations.</p>
         </div>
 
         <!-- Main Content -->
@@ -271,26 +250,10 @@
             <h2>2. The Building Block: The Artificial Neuron</h2>
             <p>The smallest part of a neural network is an artificial neuron. Think of it as a tiny decision-maker that takes in several pieces of information (inputs), weighs their importance, and makes a simple decision.</p>
             
-            <div class="neuron-diagram">
+            <div class="diagram-container">
                 <h3>Visual Model of a Single Neuron</h3>
-                <div class="neuron-visual">
-                    <pre>
-      Inputs                Weights              Neuron
-      (Data)             (Importance)
-┌─────────────────┐   ┌───────────┐      ┌─────────────┐
-│  Ear Shape:     │   │    0.8    │      │             │
-│       0.7   ────┼───┼─►         │      │             │
-└─────────────────┘   │           │      │   Sum all   │
-┌─────────────────┐   │    0.5    │      │ (Input*Weight)│
-│  Snout Length:  │   │           │      │              │
-│       0.9   ────┼───┼─►   +     ├─────►│ + Bias ────►│───► Output
-└─────────────────┘   │           │      │  Activation  │  (e.g., 0.9)
-┌─────────────────┐   │    0.3    │      │   Function   │  ("Probably Dog")
-│   Sound:        │   │           │      │              │
-│       0.2   ────┼───┼─►         │      │             │
-└─────────────────┘   └───────────┘      └─────────────┘
-                    </pre>
-                </div>
+                <img src="singleNeuron.png" alt="Diagram of a single artificial neuron showing inputs, weights, and activation function" class="diagram-image">
+                <p class="diagram-caption">Figure 1: Structure of an artificial neuron - the fundamental building block of neural networks</p>
                 
                 <div class="key-points">
                     <h4>Key Components:</h4>
@@ -307,28 +270,10 @@
             <h2>3. The Network: Connecting Neurons to Form a Chain of Thought</h2>
             <p>A single neuron has limited capability. The true power emerges when we connect many neurons together in layers, forming a <strong>network</strong> that can handle complex pattern recognition.</p>
             
-            <div class="network-diagram">
+            <div class="diagram-container">
                 <h3>Visual Model of a Simple Neural Network</h3>
-                <div class="neuron-visual">
-                    <pre>
-Input Layer      Hidden Layer 1      Hidden Layer 2      Output Layer
- (Raw Data)     (Finds Simple      (Finds Complex     (The Final Answer)
-                 Patterns)          Patterns)
-
-┌──────────┐     ┌──────────┐       ┌──────────┐       ┌──────────┐
-│ Ear      │----→│ Neuron 1 │------→│ Neuron 4 │------→│   Cat:   │
-│ Shape    │     └──────────┘       └──────────┘       │   0.1    │
-└──────────┘            │                 │            └──────────┘
-┌──────────┐     ┌──────────┐       ┌──────────┐       ┌──────────┐
-│ Snout    │----→│ Neuron 2 │------→│ Neuron 5 │------→│   Dog:   │
-│ Length   │     └──────────┘       └──────────┘       │   0.9  ←── "It's a dog!"
-└──────────┘            │                 │            └──────────┘
-┌──────────┐     ┌──────────┘       ┌──────────┘
-│  Sound   │----→│ Neuron 3 │------→│ Neuron 6 │
-│          │     └──────────┘       └──────────┘
-└──────────┘
-                    </pre>
-                </div>
+                <img src="neuralNetwork.png" alt="Diagram showing a neural network with input, hidden, and output layers" class="diagram-image">
+                <p class="diagram-caption">Figure 2: Architecture of a multi-layer neural network showing information flow from input to output</p>
                 
                 <div class="key-points">
                     <h4>Network Architecture:</h4>
@@ -353,35 +298,9 @@ Input Layer      Hidden Layer 1      Hidden Layer 2      Output Layer
             <div class="training-loop">
                 <h3>The Training Process</h3>
                 
-                <div class="loop-diagram">
-                    <pre>
-      ┌───────────────────────────────────────┐
-      │                                       │
-      │   1. Show an example (e.g., a cat)    │
-      │                                       │
-      └───────────────────────┬───────────────┘
-                              │
-                              ↓
-      ┌───────────────────────────────────────┐
-      │    2. Network makes a guess (Forward  │
-      │             Pass) - It's wrong.       │
-      └───────────────────────┬───────────────┘
-                              │
-                              ↓
-      ┌───────────────────────────────────────┐
-      │  3. Compare to correct answer and     │
-      │         calculate the error.          │
-      └───────────────────────┬───────────────┘
-                              │
-                              ↓
-      ┌───────────────────────────────────────┐
-      │  4. Adjust weights to reduce error    │◄──┐
-      │       (Backpropagation)               │   │
-      └───────────────────────┬───────────────┘   │
-                              │                   │
-                              └───────────────────┘
-                             Repeat with 1000s of examples!
-                    </pre>
+                <div class="diagram-container">
+                    <img src="learningProcess.png" alt="Diagram showing the neural network training process with forward pass and backpropagation" class="diagram-image">
+                    <p class="diagram-caption">Figure 3: The training loop showing forward propagation, error calculation, and backpropagation</p>
                 </div>
                 
                 <div class="key-points">
@@ -396,7 +315,7 @@ Input Layer      Hidden Layer 1      Hidden Layer 2      Output Layer
             </div>
 
             <div class="note-box">
-                <p><strong>Technical Insight:</strong> This process of forward pass, error calculation, and backpropagation is repeated across thousands of examples over multiple epochs. The network gradually converges toward optimal weights that minimize prediction errors.</p>
+                <p><strong>Technical Insight:</strong> This process of forward pass, error calculation, and backpropagation is repeated across thousands of examples over multiple epochs. The network gradually converges toward optimal weights that minimize prediction errors. The learning rate determines how much weights are adjusted in each iteration - too high and the network may overshoot optimal values, too low and learning becomes impractically slow.</p>
             </div>
 
             <!-- Section 5 -->
@@ -416,7 +335,7 @@ Input Layer      Hidden Layer 1      Hidden Layer 2      Output Layer
             <div class="concept-box">
                 <h3>Professional Application & Insights</h3>
                 <p>As an AI engineer, understanding these fundamental concepts is crucial for designing effective neural architectures. The principles explained here - from individual neuron computation to network-wide learning - form the basis for more advanced architectures like Convolutional Neural Networks (CNNs) for computer vision and Transformers for natural language processing.</p>
-                <p>My background in both mechanical engineering and software development provides a unique perspective on these systems. Just as mechanical systems have well-defined input-output relationships and feedback mechanisms, neural networks operate on similar principles of systematic transformation and iterative improvement based on performance feedback.</p>
+                <p>My background in both mechanical engineering and software development provides a unique perspective on these systems. Just as mechanical systems have well-defined input-output relationships and feedback mechanisms, neural networks operate on similar principles of systematic transformation and iterative improvement based on performance feedback. This interdisciplinary understanding allows me to design AI systems that are not only technically sound but also practically implementable and maintainable.</p>
             </div>
         </div>
     </div>
@@ -424,7 +343,7 @@ Input Layer      Hidden Layer 1      Hidden Layer 2      Output Layer
     <footer>
         <div class="container">
             <p>@ 2025 Anil Ghimire| All rights reserved</p>
-            <p>Demystifying Complex AI Concepts Through Clear Explanation</p>
+            <p>The Simple Guide to Neural Networks: Understanding AI's Building Blocks</p>
         </div>
     </footer>
 </body>
