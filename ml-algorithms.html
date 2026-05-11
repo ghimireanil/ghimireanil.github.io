@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Algorithms - Anil Ghimire</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --supervised: #27ae60;
+            --unsupervised: #9b59b6;
+            --deep: #e67e22;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .artifact-header {
+            text-align: center;
+            padding: 40px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .intro-section {
+            background: linear-gradient(135deg, var(--secondary), #2980b9);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 30px 0 15px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 30px 0 20px;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .supervised-badge { background: var(--supervised); }
+        .unsupervised-badge { background: var(--unsupervised); }
+        .deep-badge { background: var(--deep); }
+        
+        .algorithms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .algorithm-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border-left: 4px solid;
+        }
+        
+        .algorithm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .supervised-card { border-left-color: var(--supervised); }
+        .unsupervised-card { border-left-color: var(--unsupervised); }
+        .deep-card { border-left-color: var(--deep); }
+        
+        .algorithm-header {
+            background: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .algorithm-content {
+            padding: 20px;
+        }
+        
+        .algorithm-desc {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .algorithm-tag {
+            display: inline-block;
+            background: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin: 2px;
+            border: 1px solid #ddd;
+        }
+        
+        .domain-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            display: inline-block;
+            margin: 2px;
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 8px;
+            overflow-x: auto;
+            display: block;
+        }
+        
+        .summary-table th {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .summary-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .visual-framework {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .framework-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 20px 0;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .guide-box {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .key-insight {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .key-insight h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .key-insight ul {
+            margin-left: 20px;
+        }
+        
+        .conclusion-box {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 30px 20px;
+            }
+            
+            .algorithms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .artifact-header h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        .note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="back-btn">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Artifact Header -->
+        <div class="artifact-header">
+            <h1>Machine Learning Algorithms</h1>
+            <p>A Complete Structured Overview with Visual Framework</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-section">
+            <h2>Introduction</h2>
+            <p>Machine learning is a branch of artificial intelligence that enables systems to learn patterns from data and make predictions or decisions without being explicitly programmed. Depending on the type of data and the problem being solved, different algorithms are used. These algorithms are generally grouped into three major categories: <strong>Supervised Learning</strong>, <strong>Unsupervised Learning</strong>, and <strong>Deep Learning / Generative Models</strong>.</p>
+            <p>This article provides a structured explanation of the most commonly used machine learning algorithms across these categories, along with their applications in tabular data, computer vision, natural language processing (NLP), and generative AI.</p>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><div class="legend-color" style="background: var(--supervised);"></div><span>Supervised Learning</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: var(--unsupervised);"></div><span>Unsupervised Learning</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: var(--deep);"></div><span>Deep Learning / Generative AI</span></div>
+        </div>
+
+        <!-- Section 1: Supervised Learning -->
+        <div class="content-section">
+            <div class="category-header">
+                <span class="category-badge supervised-badge">1</span>
+                <h2 style="margin:0; border:none;">Supervised Learning Algorithms</h2>
+            </div>
+            <p>Supervised learning algorithms learn from labeled data, meaning the input data already has correct outputs.</p>
+            
+            <div class="algorithms-grid">
+                <div class="algorithm-card supervised-card">
+                    <div class="algorithm-header">1.1 Linear Regression</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Finds the best-fit straight line that minimizes the difference between predicted and actual values.</div>
+                        <div><strong>Use cases:</strong> House price prediction, Sales forecasting, Temperature prediction</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card supervised-card">
+                    <div class="algorithm-header">1.2 Logistic Regression</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Applies a sigmoid function to output probabilities between 0 and 1.</div>
+                        <div><strong>Use cases:</strong> Spam detection, Disease diagnosis, Customer churn</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                        <div class="algorithm-tag">NLP</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card supervised-card">
+                    <div class="algorithm-header">1.3 Decision Tree</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Recursively divides data into subsets based on feature conditions.</div>
+                        <div><strong>Use cases:</strong> Loan approval, Medical diagnosis, Customer segmentation</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card supervised-card">
+                    <div class="algorithm-header">1.4 Random Forest</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Builds many decision trees and uses majority voting or averaging.</div>
+                        <div><strong>Use cases:</strong> Fraud detection, Credit scoring, Risk prediction</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                        <div class="algorithm-tag">Healthcare</div>
+                        <div class="algorithm-tag">Finance</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card supervised-card">
+                    <div class="algorithm-header">1.5 Gradient Boosting (XGBoost)</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Builds trees sequentially, each correcting errors from previous ones.</div>
+                        <div><strong>Use cases:</strong> CTR prediction, Demand forecasting, Risk modeling</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card supervised-card">
+                    <div class="algorithm-header">1.6 Support Vector Machine (SVM)</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Finds optimal hyperplane that separates classes with maximum margin.</div>
+                        <div><strong>Use cases:</strong> Image classification, Text categorization, Digit recognition</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                        <div class="algorithm-tag">Computer Vision</div>
+                        <div class="algorithm-tag">NLP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Unsupervised Learning -->
+        <div class="content-section">
+            <div class="category-header">
+                <span class="category-badge unsupervised-badge">2</span>
+                <h2 style="margin:0; border:none;">Unsupervised Learning Algorithms</h2>
+            </div>
+            <p>Unsupervised learning works with unlabeled data and discovers hidden patterns.</p>
+            
+            <div class="algorithms-grid">
+                <div class="algorithm-card unsupervised-card">
+                    <div class="algorithm-header">2.1 K-Means Clustering</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Assigns points to K groups and updates centroids iteratively.</div>
+                        <div><strong>Use cases:</strong> Customer segmentation, Market analysis, Image compression</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                        <div class="algorithm-tag">Marketing Analytics</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card unsupervised-card">
+                    <div class="algorithm-header">2.2 Hierarchical Clustering</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Builds a tree (dendrogram) of clusters by merging or splitting.</div>
+                        <div><strong>Use cases:</strong> Gene expression analysis, Document grouping, Social network analysis</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                        <div class="algorithm-tag">Bioinformatics</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card unsupervised-card">
+                    <div class="algorithm-header">2.3 Principal Component Analysis (PCA)</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Reduces dimensions while preserving maximum variance.</div>
+                        <div><strong>Use cases:</strong> Data visualization, Noise reduction, Feature compression</div>
+                        <div class="algorithm-tag">Tabular Data</div>
+                        <div class="algorithm-tag">Computer Vision</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Deep Learning & Generative AI -->
+        <div class="content-section">
+            <div class="category-header">
+                <span class="category-badge deep-badge">3</span>
+                <h2 style="margin:0; border:none;">Deep Learning & Generative AI Models</h2>
+            </div>
+            <p>These models are inspired by neural networks and used for complex tasks like image recognition, language processing, and content generation.</p>
+            
+            <div class="algorithms-grid">
+                <div class="algorithm-card deep-card">
+                    <div class="algorithm-header">3.1 Convolutional Neural Networks (CNN)</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Uses filters to detect patterns like edges, shapes, and objects.</div>
+                        <div><strong>Use cases:</strong> Facial recognition, Medical image analysis, Self-driving cars</div>
+                        <div class="algorithm-tag">Computer Vision</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card deep-card">
+                    <div class="algorithm-header">3.2 Generative Adversarial Networks (GANs)</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Two networks compete—generator creates fake data, discriminator evaluates it.</div>
+                        <div><strong>Use cases:</strong> Deepfake generation, Image enhancement, Synthetic data</div>
+                        <div class="algorithm-tag">Generative AI</div>
+                        <div class="algorithm-tag">Computer Vision</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card deep-card">
+                    <div class="algorithm-header">3.3 Diffusion Models</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Starts with noise and gradually refines it into a clear image.</div>
+                        <div><strong>Use cases:</strong> AI art generation, Text-to-image, High-quality image synthesis</div>
+                        <div class="algorithm-tag">Generative AI</div>
+                    </div>
+                </div>
+                
+                <div class="algorithm-card deep-card">
+                    <div class="algorithm-header">3.4 Transformer Models (LLMs)</div>
+                    <div class="algorithm-content">
+                        <div class="algorithm-desc">Uses attention mechanisms to understand relationships in sequences.</div>
+                        <div><strong>Use cases:</strong> Chatbots, Language translation, Code generation, Summarization</div>
+                        <div class="algorithm-tag">NLP</div>
+                        <div class="algorithm-tag">Generative AI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Relation & Insights -->
+        <div class="content-section">
+            <h2>How These Algorithms Relate</h2>
+            <div class="key-insight">
+                <h4>Algorithm Ecosystem</h4>
+                <ul>
+                    <li><strong>Supervised Learning</strong> focuses on prediction using labeled data.</li>
+                    <li><strong>Unsupervised Learning</strong> discovers hidden structures in data.</li>
+                    <li><strong>Deep Learning models</strong> handle complex data like images and text.</li>
+                    <li><strong>Generative AI models</strong> create new data instead of only analyzing it.</li>
+                </ul>
+            </div>
+            
+            <div class="key-insight">
+                <h4>Key Insights</h4>
+                <ul>
+                    <li>Tabular data problems are often best solved using tree-based models like Random Forest or XGBoost.</li>
+                    <li>Computer vision relies heavily on CNNs and modern vision transformers.</li>
+                    <li>NLP has shifted from traditional models to transformer-based architectures.</li>
+                    <li>Generative AI is rapidly evolving using diffusion models and large language models.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Quick Guide -->
+        <div class="guide-box">
+            <h3>Quick Guide: Choosing the Right Algorithm</h3>
+            <div class="legend" style="justify-content: center; margin-top: 15px;">
+                <div>📊 Have labeled data and a clear target? → Use Supervised Learning</div>
+                <div>🔍 No labels, just patterns to find? → Use Unsupervised Learning</div>
+                <div>🎨 Need to create something new? → Use Generative AI</div>
+            </div>
+            <div class="note" style="background: rgba(255,255,255,0.2); color: white; border-left-color: white;">
+                <strong>💡 Remember:</strong> There is no "best" algorithm—choose the right one based on your data, problem, and goal.
+            </div>
+        </div>
+
+        <!-- Visual Framework (Image) -->
+        <div class="visual-framework">
+            <h2>Visual Framework</h2>
+            <p><em>A complete visual reference for machine learning algorithms by domain</em></p>
+            <img src="ChatGPT Image May 11, 2026, 03_47_51 PM.png" alt="Machine Learning Algorithms Visual Framework" class="framework-image">
+            <p class="note" style="margin-top: 20px;"><strong>Domain Legend:</strong> Tabular Data | Computer Vision | NLP | Generative AI</p>
+        </div>
+
+        <!-- Summary Table -->
+        <div class="content-section">
+            <h2>Complete Algorithm Summary</h2>
+            <div style="overflow-x: auto;">
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Type</th>
+                            <th>Domains</th>
+                            <th>How It Works (Brief)</th>
+                            <th>Example Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Linear Regression</td><td>Supervised (Regression)</td><td>Tabular</td><td>Finds best-fit line</td><td>House price, Sales forecasting</td></tr>
+                        <tr><td>Logistic Regression</td><td>Supervised (Classification)</td><td>Tabular, NLP</td><td>Outputs probabilities</td><td>Spam detection, Churn prediction</td></tr>
+                        <tr><td>Decision Tree</td><td>Supervised (Classification/Regression)</td><td>Tabular</td><td>Splits data into branches</td><td>Loan approval, Medical diagnosis</td></tr>
+                        <tr><td>Random Forest</td><td>Supervised (Classification/Regression)</td><td>Tabular</td><td>Ensemble of decision trees</td><td>Fraud detection, Credit scoring</td></tr>
+                        <tr><td>Gradient Boosting (XGBoost)</td><td>Supervised (Classification/Regression)</td><td>Tabular</td><td>Sequential tree building</td><td>CTR prediction, Risk assessment</td></tr>
+                        <tr><td>SVM</td><td>Supervised (Classification/Regression)</td><td>Tabular, CV, NLP</td><td>Finds optimal hyperplane</td><td>Image classification, Text categorization</td></tr>
+                        <tr><td>K-Means</td><td>Unsupervised (Clustering)</td><td>Tabular</td><td>Groups data into K clusters</td><td>Customer segmentation, Image compression</td></tr>
+                        <tr><td>Hierarchical Clustering</td><td>Unsupervised (Clustering)</td><td>Tabular</td><td>Builds cluster tree</td><td>Gene analysis, Document clustering</td></tr>
+                        <tr><td>PCA</td><td>Unsupervised (Dim Reduction)</td><td>Tabular, CV</td><td>Reduces dimensions while preserving variance</td><td>Data visualization, Noise reduction</td></tr>
+                        <tr><td>GANs</td><td>Generative</td><td>Gen AI, CV</td><td>Generator vs Discriminator</td><td>Image generation, Synthetic data</td></tr>
+                        <tr><td>Diffusion Models</td><td>Generative</td><td>Gen AI</td><td>Noise-to-image refinement</td><td>Text-to-image, Art creation</td></tr>
+                        <tr><td>Transformers (LLMs)</td><td>Generative</td><td>NLP, Gen AI</td><td>Attention mechanisms</td><td>Chatbots, Code generation, Summarization</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="conclusion-box">
+            <h2>Conclusion</h2>
+            <p>Machine learning is a diverse field where each algorithm has a specific strength depending on the type of data and problem. Understanding when and why to use each model is more important than memorizing them. Together, these algorithms form the foundation of modern AI systems used in industries like healthcare, finance, technology, and entertainment.</p>
+            <div style="margin-top: 20px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px;">
+                <p><strong>🎯 Key Takeaway:</strong> There is no "best" algorithm—choose the right one based on your data, problem, and goal.</p>
+                <p><strong>📊 Tabular Data:</strong> Tree-based models like Random Forest or XGBoost<br>
+                <strong>🖼️ Computer Vision:</strong> CNNs and vision transformers<br>
+                <strong>📝 NLP:</strong> Transformer-based architectures<br>
+                <strong>✨ Generative AI:</strong> Diffusion models and large language models</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Anil Ghimire - AI Engineering Portfolio</p>
+            <p>Comprehensive Guide to Machine Learning Algorithms</p>
+        </div>
+    </footer>
+</body>
+</html>
