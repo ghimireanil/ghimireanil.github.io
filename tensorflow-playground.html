@@ -48,6 +48,10 @@
             margin-bottom: 20px;
         }
         
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        
         .artifact-header {
             text-align: center;
             padding: 40px 0;
@@ -94,6 +98,22 @@
         h4 {
             color: var(--primary);
             margin: 20px 0 10px;
+        }
+        
+        .playground-link {
+            display: inline-block;
+            background: var(--playground);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: background 0.3s ease;
+        }
+        
+        .playground-link:hover {
+            background: #e65c00;
         }
         
         .architecture-diagram {
@@ -173,6 +193,40 @@
             border-left: 4px solid #ffc107;
         }
         
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin: 10px 0;
+        }
+        
+        .image-caption {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .image-card {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
         footer {
             background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
@@ -233,9 +287,7 @@
         <div class="artifact-header">
             <h1>Understanding Neural Networks Through Visual Experimentation</h1>
             <p>Exploring layers, neurons, activation functions, and AI learning through interactive visualization</p>
-            <div class="note" style="margin-top: 20px; display: inline-block;">
-                <strong>Tool:</strong> TensorFlow Playground
-            </div>
+            <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.10352&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" class="playground-link">🎮 Launch TensorFlow Playground →</a>
         </div>
 
         <!-- Introduction -->
@@ -262,6 +314,13 @@
             </div>
             
             <h3>Neural Network Architecture</h3>
+            
+            <!-- Image: allLayers.png - Neural Network Architecture -->
+            <div class="image-container">
+                <img src="allLayers.png" alt="Neural Network Architecture showing input, hidden, and output layers" class="article-image">
+                <p class="image-caption">Figure 1: Complete neural network architecture showing data flow from input through hidden layers to output</p>
+            </div>
+            
             <div class="architecture-diagram">
                 <div class="layer-box input-layer">
                     <strong>Input Layer</strong><br>
@@ -278,13 +337,35 @@
                     Generates final prediction/classification
                 </div>
             </div>
+            
+            <!-- Image: layer2.png - Detailed Neuron Structure -->
+            <div class="image-container">
+                <img src="layer2.png" alt="Detailed structure of a single neuron showing inputs, weights, bias, and activation function" class="article-image">
+                <p class="image-caption">Figure 2: Detailed structure of a single artificial neuron</p>
+            </div>
+            
             <p>Data flows from the input layer through hidden layers before generating a final prediction at the output layer.</p>
         </div>
 
-        <!-- TensorFlow Playground -->
+        <!-- TensorFlow Playground Interface -->
         <div class="content-section">
             <h2>Exploring TensorFlow Playground</h2>
             <p>The TensorFlow Playground provides an interactive visualization of how neural networks learn from data. Using the playground, I experimented with different datasets, noise levels, hidden layer structures, number of neurons, learning rates, and activation functions.</p>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="tensor1.png" alt="TensorFlow Playground interface showing experiment configuration" class="article-image">
+                    <p class="image-caption">Figure 3a: TensorFlow Playground - Experiment configuration with test loss 0.007</p>
+                </div>
+                <div class="image-card">
+                    <img src="tensor2.png" alt="TensorFlow Playground with different feature settings" class="article-image">
+                    <p class="image-caption">Figure 3b: Experiment with sin features and 4-2 network shape</p>
+                </div>
+                <div class="image-card">
+                    <img src="tensor3.png" alt="TensorFlow Playground with 6 neuron hidden layer" class="article-image">
+                    <p class="image-caption">Figure 3c: Experiment with 6-neuron hidden layer configuration</p>
+                </div>
+            </div>
             
             <div class="note">
                 <strong>Experiments Conducted:</strong> The visual interface made it easier to observe how neural networks adjust during training and how different settings influence prediction accuracy.
@@ -348,6 +429,20 @@
             </div>
         </div>
 
+        <!-- Color Meanings -->
+        <div class="content-section">
+            <h2>Understanding the Visualizations</h2>
+            <p>In TensorFlow Playground, colors convey important information about the network's state:</p>
+            <ul style="margin-left: 20px;">
+                <li><strong style="color: #ff6b00;">Orange</strong> represents negative values</li>
+                <li><strong style="color: #3498db;">Blue</strong> represents positive values</li>
+                <li>Data points are colored orange or blue corresponding to positive/negative one</li>
+                <li>Connection line colors show the weight values between neurons</li>
+                <li>Background color intensity shows prediction confidence</li>
+            </ul>
+            <div class="note">This color coding makes it easy to visually track how the network learns and which features become important during training.</div>
+        </div>
+
         <!-- Why Visualization Matters -->
         <div class="content-section">
             <h2>Why Visualization Matters in AI</h2>
@@ -365,17 +460,17 @@
             <p>Visualization transforms abstract AI concepts into practical learning experiences.</p>
         </div>
 
-        <!-- Reflection -->
-        <div class="reflection-box">
-            <h2>Reflection</h2>
-            <p>Working with TensorFlow Playground significantly improved my understanding of neural networks and deep learning fundamentals. Before this project, concepts such as activation functions, hidden layers, and optimization algorithms felt highly mathematical and abstract. However, visual experimentation made these concepts much easier to understand.</p>
-            <p>One of the most valuable lessons I learned was how small architectural changes can dramatically affect model performance. Adjusting hidden layers, neurons, noise levels, and learning rates clearly demonstrated the balance between complexity, accuracy, and stability in machine learning systems.</p>
-            <p>Creating this portfolio artifact also strengthened my ability to communicate technical AI concepts clearly and professionally. Overall, this project provided practical experience with neural network behavior and reinforced the importance of experimentation and visualization in artificial intelligence.</p>
+        <!-- Live Demo Link -->
+        <div class="content-section" style="text-align: center;">
+            <h2>Try It Yourself</h2>
+            <p>Experience neural networks in action with the TensorFlow Playground interactive tool.</p>
+            <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.10352&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" class="playground-link">🚀 Launch TensorFlow Playground →</a>
+            <p class="image-caption" style="margin-top: 15px;">Adjust parameters, add layers, change activation functions, and watch the network learn in real-time.</p>
         </div>
 
         <!-- Final Thoughts -->
         <div class="content-section">
-            <h2>Final Thoughts</h2>
+            <h2>Professional Insights</h2>
             <p>Neural networks are powerful tools that continue to shape the future of artificial intelligence. While the underlying mathematics can be complex, visual tools such as TensorFlow Playground make these concepts far more accessible and engaging.</p>
             <p>Interactive experimentation not only improves technical understanding but also helps bridge the gap between theory and practical application in machine learning.</p>
             <div class="key-takeaway">
@@ -387,7 +482,7 @@
     <footer>
         <div class="container">
             <p>@ 2026 Anil Ghimire| All rights reserved</p>
-            <p>Understanding Neural Networks Through Visual Experimentation</p>
+            <p>Visual Understanding of Neural Networks with TensorFlow Playground</p>
         </div>
     </footer>
 </body>
