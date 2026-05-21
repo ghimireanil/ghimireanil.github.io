@@ -62,8 +62,6 @@
         }
         
         .intro-section {
-            background: linear-gradient(135deg, var(--playground), #e65c00);
-            color: white;
             padding: 30px;
             border-radius: 10px;
             margin: 30px 0;
@@ -287,7 +285,6 @@
         <div class="artifact-header">
             <h1>Understanding Neural Networks Through Visual Experimentation</h1>
             <p>Exploring layers, neurons, activation functions, and AI learning through interactive visualization</p>
-            <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.10352&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" class="playground-link">🎮 Launch TensorFlow Playground →</a>
         </div>
 
         <!-- Introduction -->
@@ -372,6 +369,28 @@
             </div>
         </div>
 
+        <!-- Live Demo Link -->
+        <div class="content-section" style="text-align: center;">
+            <h2>Try TensorFlow Playground Yourself</h2>
+            <p>Experience neural networks in action with the TensorFlow Playground interactive tool.</p>
+            <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.10352&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" class="playground-link">🎮 Launch TensorFlow Playground</a>
+            <p class="image-caption" style="margin-top: 15px;">Adjust parameters, add layers, change activation functions, and watch the network learn in real-time.</p>
+        </div>
+
+          <!-- Color Meanings -->
+        <div class="content-section">
+            <h2>Understanding the Visualizations</h2>
+            <p>In TensorFlow Playground, colors convey important information about the network's state:</p>
+            <ul style="margin-left: 20px;">
+                <li><strong style="color: #ff6b00;">Orange</strong> represents negative values</li>
+                <li><strong style="color: #3498db;">Blue</strong> represents positive values</li>
+                <li>Data points are colored orange or blue corresponding to positive/negative one</li>
+                <li>Connection line colors show the weight values between neurons</li>
+                <li>Background color intensity shows prediction confidence</li>
+            </ul>
+            <div class="note">This color coding makes it easy to visually track how the network learns and which features become important during training.</div>
+        </div>
+
         <!-- Neural Network Components -->
         <div class="content-section">
             <h2>Understanding Neural Network Components</h2>
@@ -429,20 +448,6 @@
             </div>
         </div>
 
-        <!-- Color Meanings -->
-        <div class="content-section">
-            <h2>Understanding the Visualizations</h2>
-            <p>In TensorFlow Playground, colors convey important information about the network's state:</p>
-            <ul style="margin-left: 20px;">
-                <li><strong style="color: #ff6b00;">Orange</strong> represents negative values</li>
-                <li><strong style="color: #3498db;">Blue</strong> represents positive values</li>
-                <li>Data points are colored orange or blue corresponding to positive/negative one</li>
-                <li>Connection line colors show the weight values between neurons</li>
-                <li>Background color intensity shows prediction confidence</li>
-            </ul>
-            <div class="note">This color coding makes it easy to visually track how the network learns and which features become important during training.</div>
-        </div>
-
         <!-- Why Visualization Matters -->
         <div class="content-section">
             <h2>Why Visualization Matters in AI</h2>
@@ -458,14 +463,6 @@
                 </ul>
             </div>
             <p>Visualization transforms abstract AI concepts into practical learning experiences.</p>
-        </div>
-
-        <!-- Live Demo Link -->
-        <div class="content-section" style="text-align: center;">
-            <h2>Try It Yourself</h2>
-            <p>Experience neural networks in action with the TensorFlow Playground interactive tool.</p>
-            <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.10352&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" class="playground-link">🚀 Launch TensorFlow Playground →</a>
-            <p class="image-caption" style="margin-top: 15px;">Adjust parameters, add layers, change activation functions, and watch the network learn in real-time.</p>
         </div>
 
         <!-- Final Thoughts -->
