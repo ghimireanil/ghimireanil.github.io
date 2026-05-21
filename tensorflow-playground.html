@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TensorFlow Playground - Anil Ghimire</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --playground: #ff6b00;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .artifact-header {
+            text-align: center;
+            padding: 40px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .intro-section {
+            background: linear-gradient(135deg, var(--playground), #e65c00);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+        }
+        
+        h4 {
+            color: var(--primary);
+            margin: 20px 0 10px;
+        }
+        
+        .architecture-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .layer-box {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .input-layer { border-top: 4px solid var(--secondary); }
+        .hidden-layer { border-top: 4px solid var(--playground); }
+        .output-layer { border-top: 4px solid var(--accent); }
+        
+        .arrow {
+            font-size: 2em;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .finding-card {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .finding-card h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .reflection-box {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .component-card {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .key-takeaway {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 30px 20px;
+            }
+            
+            .layer-box {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            
+            .arrow {
+                display: block;
+                transform: rotate(90deg);
+            }
+            
+            .artifact-header h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        .note {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="back-btn">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Artifact Header -->
+        <div class="artifact-header">
+            <h1>Understanding Neural Networks Through Visual Experimentation</h1>
+            <p>Exploring layers, neurons, activation functions, and AI learning through interactive visualization</p>
+            <div class="note" style="margin-top: 20px; display: inline-block;">
+                <strong>Tool:</strong> TensorFlow Playground
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-section">
+            <h2>Introduction</h2>
+            <p>Artificial Intelligence has transformed the way modern technology works. From voice assistants and recommendation systems to self-driving vehicles and generative AI, neural networks are at the center of many intelligent systems we use every day.</p>
+            <p>While neural networks are often explained using complex mathematics and programming concepts, visual tools can make them much easier to understand. To explore how neural networks learn and make predictions, I used the interactive tool <strong>TensorFlow Playground</strong>.</p>
+            <p>This hands-on experiment allowed me to visually train neural networks, adjust model settings, and observe how changes impacted performance, complexity, and accuracy in real time.</p>
+        </div>
+
+        <!-- What is a Neural Network -->
+        <div class="content-section">
+            <h2>What Is a Neural Network?</h2>
+            <p>A neural network is a machine learning model inspired by the structure of the human brain. It consists of connected processing units called <strong>neurons</strong> that work together to identify patterns and make predictions from data.</p>
+            
+            <div class="note">
+                <strong>Applications of Neural Networks:</strong>
+                <span class="tag">Image Recognition</span>
+                <span class="tag">Speech Recognition</span>
+                <span class="tag">Recommendation Systems</span>
+                <span class="tag">Fraud Detection</span>
+                <span class="tag">Natural Language Processing</span>
+                <span class="tag">Generative AI</span>
+            </div>
+            
+            <h3>Neural Network Architecture</h3>
+            <div class="architecture-diagram">
+                <div class="layer-box input-layer">
+                    <strong>Input Layer</strong><br>
+                    Receives raw data (images, numbers, text features)
+                </div>
+                <span class="arrow">→</span>
+                <div class="layer-box hidden-layer">
+                    <strong>Hidden Layers</strong><br>
+                    Process information, detect patterns, transform data
+                </div>
+                <span class="arrow">→</span>
+                <div class="layer-box output-layer">
+                    <strong>Output Layer</strong><br>
+                    Generates final prediction/classification
+                </div>
+            </div>
+            <p>Data flows from the input layer through hidden layers before generating a final prediction at the output layer.</p>
+        </div>
+
+        <!-- TensorFlow Playground -->
+        <div class="content-section">
+            <h2>Exploring TensorFlow Playground</h2>
+            <p>The TensorFlow Playground provides an interactive visualization of how neural networks learn from data. Using the playground, I experimented with different datasets, noise levels, hidden layer structures, number of neurons, learning rates, and activation functions.</p>
+            
+            <div class="note">
+                <strong>Experiments Conducted:</strong> The visual interface made it easier to observe how neural networks adjust during training and how different settings influence prediction accuracy.
+            </div>
+        </div>
+
+        <!-- Neural Network Components -->
+        <div class="content-section">
+            <h2>Understanding Neural Network Components</h2>
+            
+            <h3>Neurons</h3>
+            <p>Neurons are the individual processing units inside a neural network. Each neuron receives inputs, performs calculations, and passes outputs to the next layer. Neurons work collectively to learn patterns and relationships within data.</p>
+            
+            <h3>Weights: How Neural Networks Learn</h3>
+            <p>Weights determine the strength of connections between neurons. During training, important connections receive larger weights while less useful connections receive smaller weights. The network continuously adjusts these weights to reduce prediction errors and improve accuracy.</p>
+            <div class="note">One of the most interesting aspects of TensorFlow Playground was visually observing weight changes during training.</div>
+            
+            <h3>Activation Functions</h3>
+            <p>Activation functions decide whether a neuron should activate based on input values. They introduce non-linearity into the network, allowing neural networks to solve complex problems beyond simple linear relationships.</p>
+            <div class="component-grid">
+                <div class="component-card"><strong>ReLU</strong><br>Fast training, clean boundaries</div>
+                <div class="component-card"><strong>Sigmoid</strong><br>Smooth output, probability mapping</div>
+                <div class="component-card"><strong>Tanh</strong><br>Zero-centered, better for some tasks</div>
+            </div>
+            <div class="note">During experimentation, ReLU often trained faster and produced cleaner decision boundaries compared to sigmoid activation.</div>
+            
+            <h3>Loss Functions and Optimization</h3>
+            <p>Neural networks improve through a process called optimization. <strong>Loss Functions</strong> measure how far the model's predictions are from correct answers (e.g., Mean Squared Error, Cross-Entropy Loss). <strong>Optimization Algorithms</strong> update weights to reduce loss (e.g., Gradient Descent, SGD, Adam Optimizer).</p>
+            <div class="key-takeaway">
+                <strong>Observations:</strong><br>
+                • High learning rates caused unstable training<br>
+                • Very low learning rates slowed learning significantly<br>
+                • Balanced learning rates produced smoother convergence
+            </div>
+        </div>
+
+        <!-- Key Findings -->
+        <div class="content-section">
+            <h2>Key Findings From the Experiments</h2>
+            
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <h4>1. Hidden Layers Improve Complexity Handling</h4>
+                    <p>Adding hidden layers allowed the model to classify more complex datasets. However, deeper networks required longer training times.</p>
+                </div>
+                
+                <div class="finding-card">
+                    <h4>2. Noise Reduces Accuracy</h4>
+                    <p>Increasing noise made patterns harder to separate, reducing prediction accuracy. This demonstrated how important clean and structured data is in machine learning.</p>
+                </div>
+                
+                <div class="finding-card">
+                    <h4>3. More Neurons Improve Pattern Recognition</h4>
+                    <p>Increasing neuron counts improved classification ability but also increased computational complexity. Too many neurons can lead to overfitting.</p>
+                </div>
+                
+                <div class="finding-card">
+                    <h4>4. Activation Functions Matter</h4>
+                    <p>Different activation functions produced noticeably different results. ReLU activation generally trained faster and performed better on many datasets.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Visualization Matters -->
+        <div class="content-section">
+            <h2>Why Visualization Matters in AI</h2>
+            <p>One of the biggest takeaways from this project was the importance of visualization in understanding machine learning concepts.</p>
+            <div class="note">
+                <strong>TensorFlow Playground allowed me to:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Observe how data flows through layers</li>
+                    <li>Watch neurons interact</li>
+                    <li>See loss reduction in real time</li>
+                    <li>Compare architectures visually</li>
+                    <li>Understand how parameters affect performance</li>
+                </ul>
+            </div>
+            <p>Visualization transforms abstract AI concepts into practical learning experiences.</p>
+        </div>
+
+        <!-- Reflection -->
+        <div class="reflection-box">
+            <h2>Reflection</h2>
+            <p>Working with TensorFlow Playground significantly improved my understanding of neural networks and deep learning fundamentals. Before this project, concepts such as activation functions, hidden layers, and optimization algorithms felt highly mathematical and abstract. However, visual experimentation made these concepts much easier to understand.</p>
+            <p>One of the most valuable lessons I learned was how small architectural changes can dramatically affect model performance. Adjusting hidden layers, neurons, noise levels, and learning rates clearly demonstrated the balance between complexity, accuracy, and stability in machine learning systems.</p>
+            <p>Creating this portfolio artifact also strengthened my ability to communicate technical AI concepts clearly and professionally. Overall, this project provided practical experience with neural network behavior and reinforced the importance of experimentation and visualization in artificial intelligence.</p>
+        </div>
+
+        <!-- Final Thoughts -->
+        <div class="content-section">
+            <h2>Final Thoughts</h2>
+            <p>Neural networks are powerful tools that continue to shape the future of artificial intelligence. While the underlying mathematics can be complex, visual tools such as TensorFlow Playground make these concepts far more accessible and engaging.</p>
+            <p>Interactive experimentation not only improves technical understanding but also helps bridge the gap between theory and practical application in machine learning.</p>
+            <div class="key-takeaway">
+                <strong>Recommendation:</strong> If you are beginning your journey into AI and deep learning, I highly recommend experimenting with TensorFlow Playground to build intuition about how neural networks learn and evolve.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>@ 2026 Anil Ghimire| All rights reserved</p>
+            <p>Understanding Neural Networks Through Visual Experimentation</p>
+        </div>
+    </footer>
+</body>
+</html>
